@@ -1,0 +1,23 @@
+# Click "Send Request" above each block (VS Code "REST Client" extension:
+# humao.rest-client), or copy the curl equivalents from the README.
+
+@base = http://localhost:8080
+@user = 6f9619ff-8b86-4d11-b42d-00c04fc964ff
+
+### Liveness
+GET {{base}}/health
+
+### Readiness (checks DB)
+GET {{base}}/health/db
+
+### Unknown route → JSON 404
+GET {{base}}/nope
+
+### Template for feature endpoints
+# POST {{base}}/api/v1/things
+# Content-Type: application/json
+# X-User-ID: {{user}}
+#
+# {
+#   "title": "Hello world"
+# }
